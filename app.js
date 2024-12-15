@@ -6,7 +6,7 @@ const app = express();
 const { errorHandler } = require("./middleware");
 const router = require("./routes");
 const cors = require('cors');
-const port = process.env.PORT
+const port = process.env.PORT || 2024
 
 // app.use(cors())
 app.use(express.urlencoded({ extended: true }))

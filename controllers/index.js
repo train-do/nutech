@@ -15,7 +15,7 @@ async function registration(req, res, next) {
 async function login(req, res, next) {
     try {
         const { email, password } = req.body
-        console.log(req.body)
+        // console.log(req.body)
         if (!email || !password) throw { errorName: "nullForm" }
         let user = await findMembership(req.body)
         if (!user || !hashCompare(password, user.password)) throw { errorName: "invalid" }
@@ -52,7 +52,7 @@ async function profile(req, res, next) {
 async function editProfile(req, res, next) {
     try {
         const { token } = req.headers
-        console.log(req, "------")
+        // console.log(req, "------")
         const { email } = validateToken(token)
         const { first_name, last_name } = req.body
         let user = await updateProfile(first_name, last_name, email)
@@ -66,7 +66,7 @@ async function updateImage(req, res, next) {
     try {
         // if (!req.file) throw { errorName: "nullForm" }
         const token = req.headers
-        console.log(token, "**********")
+        // console.log(token, "**********")
         const url = req.file?.path || null
         // console.log("MASUK UPDATE IMAGE", req.file, !req.file, url)
         // const { email } = validateToken(token)
@@ -74,8 +74,8 @@ async function updateImage(req, res, next) {
         let response = generateResponse(0, "Update Profile Image berhasil", user)
         res.json(response)
     } catch (error) {
-        console.log(error)
-        // next(error)
+        // console.log(error)
+        next(error)
     }
 }
 async function services(req, res, next) {

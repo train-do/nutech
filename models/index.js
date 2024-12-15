@@ -52,7 +52,7 @@ async function updateProfile(first_name, last_name, email) {
 }
 async function updateImage(profile_image, email) {
     try {
-        console.log(profile_image)
+        // console.log(profile_image)
         const query = `
         update "Memberships" set profile_image = $1 where email ilike $2 returning email, first_name, last_name, profile_image;
         `
